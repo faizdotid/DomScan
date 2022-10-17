@@ -13,6 +13,9 @@ class RequestSite:
         try:
             self.response = requests.get(self.domain, headers={
                                          'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'}, timeout=10, allow_redirects=True)
+        except KeyboardInterrupt:
+            print(Fore.RED + "CTRL + C Detected\nExiting Tools....")
+            exit()
         except:
             self.response = False
 
