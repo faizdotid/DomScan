@@ -26,7 +26,7 @@ class Lookup:
         try:
             resp = requests.get(_api, headers={
                                 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'}, timeout=70).text
-            if re.search('error', resp):
+            if re.search('error|API count exceeded', resp):
                 return False
             else:
                 return resp
