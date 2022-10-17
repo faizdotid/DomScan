@@ -72,6 +72,7 @@ class Main(object):
             print(_fp)
         else:
             _fp = _format.format('http://'+result_lookup, scanner.invalid)
+            print(_fp)
 
     def _start(self):
         try:
