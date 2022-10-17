@@ -13,6 +13,13 @@ class Lookup:
         self.domain = self.get_root_domain()
         self.results = list()
 
+    def get_ip(self):
+        try:
+            ip = socket.gethostbyname(self.domain)
+        except:
+            ip = self.domain
+        finally:
+            return ip
     def get_root_domain(self):
         if '://' in self.url:
             domain = self.url.split('/')[2]
@@ -36,7 +43,7 @@ class Lookup:
 
     def reverseip(self):
         api = 'https://api.hackertarget.com/reverseiplookup/?q={}'.format(
-            self.domain)
+            self.get_ip())
         _resp = self.request(api)
         if _resp:
             self.results.extend(_resp.splitlines())
